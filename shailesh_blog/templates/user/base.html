@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up | {% block title %}{% endblock title %}</title>
+    <link rel="shortcut icon" href="/static/images/flexydial-logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- All css files will come here -->
+	{% block stylesheets %}
+	<link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+    
+	{% endblock stylesheets %}
+	{% block extra-stylesheets %}
+	{% endblock extra-stylesheets %}
+</head>

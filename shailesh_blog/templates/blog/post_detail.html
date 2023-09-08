@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html' %}
+<html lang="en">
+{% block title %}  SHAILESH'S BLOG {% endblock %}
+
+<div class="container">
+<h1> SHAILESH'S Blog </h1>
+{% block content %}
+<h1>Hii SHAILESH</h1>
+    <h1>{{post.title}} .....</h1>
+    <div class="container">
+            {{ post.body }}
+</div>
+    <a href="/mail/{{post.id}}" class="btn btn-primary">SHARE INFO BY MAIL</a>
+    
+    <br><br><br>
+
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+        {{ cform.as_p }}
+        <input type="submit" value="Add Comment">
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Similar Posts </h2>
+        {% if similar_posts %}
+        {% for post in similar_posts %}
+        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+         {% endfor %}
+        {% else %}
+                <p>No Similar Posts Yet </p>
+                {%endif%}
+    </div>
+    <h1>.... comments.... </h1>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+           <h1>  {{ post.comments.count }} comment{{post.comments.count|pluralize}}</h1>
+    {% for comment in comments %}
+    
+    {{ comment.name }} &nbsp&nbsp&nbsp
+    {{ comment.created }}&nbsp&nbsp <br>
+    <p> comment : {{ comment.body }}</p><br><br><br>
+     {% endfor %}
+    </div>
+    {{ post.comments.count }}
+    </div>
+    {% endblock %}
+    
+</div>
+</body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+</html>
